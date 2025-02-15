@@ -1,7 +1,7 @@
-import ListComponent from './ListComponent';
+import ListComponent from '../ListComponent/ListComponent';
 import { Flex, Typography } from 'antd';
 import { useSelector } from 'react-redux';
-import { RootState } from '../app/store';
+import { RootState } from '../../app/store';
 
 
 export default function Main() {

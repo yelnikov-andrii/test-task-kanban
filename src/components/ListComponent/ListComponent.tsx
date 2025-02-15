@@ -1,9 +1,9 @@
 import React from 'react';
 import { List } from 'antd';
-import ListItem from './ListItem';
+import ListItem from '../ListItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { getIssuesDone, getIssuesInProgress, getIssuesTodo } from '../app/features/issues/issuesSlice';
-import { RootState } from '../app/store';
+import { getIssuesDone, getIssuesInProgress, getIssuesTodo } from '../../app/features/issues/issuesSlice';
+import { RootState } from '../../app/store';
 
 
 
