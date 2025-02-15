@@ -11,7 +11,7 @@ export default function ListComponent({ title, arr, listKey }: { title: string, 
     const dispatch = useDispatch();
     const repoUrl = useSelector((state: RootState) => state.repo.repoUrl);
 
-    const handleDrugStart = (e: React.DragEvent<HTMLDivElement>, index: number) => {
+    const handleDragStart = (e: React.DragEvent<HTMLDivElement>, index: number) => {
         e.dataTransfer.setData('draggedItemIndex', index.toString());
         e.dataTransfer.setData('draggedListKey', listKey);
     }
@@ -20,7 +20,7 @@ export default function ListComponent({ title, arr, listKey }: { title: string, 
         e.preventDefault();
     };
 
-    const handleDrop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>, index: number | null) => {
         const draggedIndex = +e.dataTransfer.getData('draggedItemIndex');
         const draggedListKey = e.dataTransfer.getData('draggedListKey');
 
@@ -40,7 +40,13 @@ export default function ListComponent({ title, arr, listKey }: { title: string, 
         const draggedItem = arrFromWhichDragged[draggedIndex];
         arrFromWhichDragged.splice(draggedIndex, 1);
 
-        currentArr.splice(index, 0, draggedItem);
+        if (index !== null) {
+            currentArr.splice(index, 0, draggedItem);
+        } else {
+            currentArr.push(draggedItem);
+        }
+
+
         localStorage.setItem(repoUrl, JSON.stringify(state));
 
         dispatch(getIssuesTodo(state.todo));
@@ -49,7 +55,11 @@ export default function ListComponent({ title, arr, listKey }: { title: string, 
     };
 
     return (
-        <div style={{ flex: 1, textAlign: 'center' }} onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 1)}>
+        <div style={{ flex: 1, textAlign: 'center' }} onDragOver={handleDragOver} onDrop={(e) => {
+            if (arr.length === 0) {
+                handleDrop(e, null)
+            }
+        }}>
             <h2>
                 {title}
             </h2>
@@ -61,7 +71,7 @@ export default function ListComponent({ title, arr, listKey }: { title: string, 
                     <div
                         key={item.id}
                         draggable
-                        onDragStart={(e) => handleDrugStart(e, index)}
+                        onDragStart={(e) => handleDragStart(e, index)}
                         onDragOver={handleDragOver}
                         onDrop={(e) => handleDrop(e, index)}
                     >

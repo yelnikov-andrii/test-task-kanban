@@ -1,4 +1,3 @@
-import React from 'react'
 import ListComponent from './ListComponent'
 import { Flex, Typography } from 'antd'
 import { useSelector } from 'react-redux';

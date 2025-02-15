@@ -1,5 +1,4 @@
 import { Breadcrumb } from 'antd'
-import React from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../app/store'
 
@@ -21,17 +20,19 @@ export default function NavComponent() {
     const ownerUrl = `https://github.com/${owner}`;
 
     return (
-        <Breadcrumb separator=">">
-            <Breadcrumb.Item>
-                <a href={repositoryUrl} target='_blank'>
-                    {repoName}
-                </a>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-                <a href={ownerUrl} target='_blank'>
-                    {ownerName}
-                </a>
-            </Breadcrumb.Item>
-        </Breadcrumb>
+        <Breadcrumb
+            separator=">"
+            items={[
+                {
+                    title: ownerName,
+                    href: ownerUrl
+                },
+                {
+                    title: repoName,
+                    href: repositoryUrl,
+                },
+            ]}
+
+        />
     )
 }
