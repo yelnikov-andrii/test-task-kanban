@@ -15,4 +15,5 @@
 .list {
   padding: 16px;
   background: rgb(215, 215, 215);
+  min-width: 290px;
 }

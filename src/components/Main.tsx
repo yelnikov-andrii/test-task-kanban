@@ -17,7 +17,7 @@ export default function Main() {
         <main className='main'>
             {issuesSearched && (
                 allIssues.length ? (
-                    <Flex justify='space-between' gap={16}>
+                    <Flex justify='space-between' gap={16} wrap>
                         <ListComponent title="Todo" listKey="todo" arr={issuesTodo} />
                         <ListComponent title="In progress" listKey="inProgress" arr={issuesInProgress} />
                         <ListComponent title="Done" listKey="done" arr={issuesDone} />
