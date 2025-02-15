@@ -7,10 +7,10 @@ import { describe, expect, it } from 'vitest';
 
 const mockState = {
     issues: {
-        issuesTodo: [{ id: 1, title: 'Some issue', state: 'open', assignee: false, number: 1488, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date }],
-        issuesInProgress: [{ id: 2, title: 'Some issue 2', state: 'open', assignee: true, number: 1489, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date }],
-        issuesDone: [{ id: 3, title: 'Some issue 3', state: 'closed', assignee: false, number: 1490, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date }],
-        allIssues: [{ id: 1, title: 'Some issue', state: 'open', assignee: false, number: 1488, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date }, { id: 2, title: 'Some issue 2', state: 'open', assignee: true, number: 1489, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date }, { id: 3, title: 'Some issue 3', state: 'closed', assignee: false, number: 1490, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date }],
+        issuesTodo: [{ id: 1, title: 'Some issue', state: 'open', assignee: false, number: 1488, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date, comments: 3, user: {type: 'User'} }],
+        issuesInProgress: [{ id: 2, title: 'Some issue 2', state: 'open', assignee: true, number: 1489, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date, comments: 3, user: {type: 'User'} }],
+        issuesDone: [{ id: 3, title: 'Some issue 3', state: 'closed', assignee: false, number: 1490, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date, comments: 3, user: {type: 'User'} }],
+        allIssues: [{ id: 1, title: 'Some issue', state: 'open', assignee: false, number: 1488, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date, comments: 3, user: {type: 'User'} }, { id: 2, title: 'Some issue 2', state: 'open', assignee: true, number: 1489, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date, comments: 3, user: {type: 'User'} }, { id: 3, title: 'Some issue 3', state: 'closed', assignee: false, number: 1490, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date, comments: 3, user: {type: 'User'} }],
         issuesWereSearched: true
     },
     repo: {

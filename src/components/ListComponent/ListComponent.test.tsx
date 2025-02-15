@@ -12,8 +12,8 @@ const store = mockStore({
 });
 
 const mockIssues = [
-    { id: 1, title: 'Issue 1', state: 'open', assignee: false, number: 1488, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date },
-    { id: 2, title: 'Issue 2', state: 'open', assignee: false, number: 1489, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date }
+    { id: 1, title: 'Issue 1', state: 'open', assignee: false, number: 1488, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date, comments: 2, user: {type: 'User'} },
+    { id: 2, title: 'Issue 2', state: 'open', assignee: false, number: 1489, commentsUrl: 'https://localhost:3000', repository_url: 'http://localhost:3000', created_at: new Date, comments: 3, user: {type: 'User'} }
 ];
 
 describe('ListComponent', () => {

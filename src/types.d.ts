@@ -7,4 +7,8 @@ interface IssueT {
     commentsUrl: string;
     repository_url: string;
     created_at: Date;
+    comments: number;
+    user: {
+        type: string;
+    }
 }
