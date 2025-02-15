@@ -1,5 +1,5 @@
-import ListComponent from './ListComponent'
-import { Flex, Typography } from 'antd'
+import ListComponent from './ListComponent';
+import { Flex, Typography } from 'antd';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
 
@@ -18,9 +18,9 @@ export default function Main() {
             {issuesSearched && (
                 allIssues.length ? (
                     <Flex justify='space-between' gap={16} wrap>
-                        <ListComponent title="Todo" listKey="todo" arr={issuesTodo} />
-                        <ListComponent title="In progress" listKey="inProgress" arr={issuesInProgress} />
-                        <ListComponent title="Done" listKey="done" arr={issuesDone} />
+                        <ListComponent title='Todo' listKey='todo' arr={issuesTodo} />
+                        <ListComponent title='In progress' listKey='inProgress' arr={issuesInProgress} />
+                        <ListComponent title='Done' listKey='done' arr={issuesDone} />
                     </Flex>
                 ) : (
                     <Typography>
@@ -29,5 +29,5 @@ export default function Main() {
                 )
             )}
         </main>
-    )
+    );
 }

@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface IssuesState {
     issuesTodo: IssueT[];
@@ -17,7 +17,7 @@ const initialState: IssuesState = {
     issuesLoading: false,
     issuesWereSearched: false,
     allIssues: [],
-}
+};
 
 export const issuesSlice = createSlice({
     name: 'issues',
@@ -45,7 +45,7 @@ export const issuesSlice = createSlice({
             state.issuesWereSearched = true;
         }
     },
-})
+});
 
 
 export const { getIssues, getAllIssues, getIssuesTodo, getIssuesInProgress, getIssuesDone, getIssuesFinally, setIssuesSearched } = issuesSlice.actions;

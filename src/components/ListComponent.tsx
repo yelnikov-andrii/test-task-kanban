@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { List } from 'antd';
 import ListItem from './ListItem';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +14,7 @@ export default function ListComponent({ title, arr, listKey }: { title: string, 
     const handleDragStart = (e: React.DragEvent<HTMLDivElement>, index: number) => {
         e.dataTransfer.setData('draggedItemIndex', index.toString());
         e.dataTransfer.setData('draggedListKey', listKey);
-    }
+    };
 
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
@@ -57,7 +57,7 @@ export default function ListComponent({ title, arr, listKey }: { title: string, 
     return (
         <div style={{ flex: 1, textAlign: 'center' }} onDragOver={handleDragOver} onDrop={(e) => {
             if (arr.length === 0) {
-                handleDrop(e, null)
+                handleDrop(e, null);
             }
         }}>
             <h2>
@@ -82,5 +82,5 @@ export default function ListComponent({ title, arr, listKey }: { title: string, 
                 )}
             />
         </div>
-    )
+    );
 }

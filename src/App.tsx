@@ -1,7 +1,7 @@
-import './App.css'
-import FormComponent from './components/Form'
-import Main from './components/Main'
-import NavComponent from './components/NavComponent'
+import './App.css';
+import FormComponent from './components/Form';
+import Main from './components/Main';
+import NavComponent from './components/NavComponent';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Main />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

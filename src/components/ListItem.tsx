@@ -13,5 +13,5 @@ export default function ListItem({ issue }: { issue: IssueT }) {
                 {`#${issue.number} opened ${daysAgo} days ago`}
             </p>
         </List.Item>
-    )
-}
+    );
+};

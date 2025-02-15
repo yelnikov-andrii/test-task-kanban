@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface RepoState {
     repoUrl: string;
@@ -7,7 +7,7 @@ export interface RepoState {
 
 const initialState: RepoState = {
     repoUrl: ''
-}
+};
 
 export const repoSlice = createSlice({
     name: 'repo',
@@ -17,7 +17,7 @@ export const repoSlice = createSlice({
             state.repoUrl = action.payload;
         }
     },
-})
+});
 
 
 export const { getRepoUrl } = repoSlice.actions;

@@ -1,8 +1,8 @@
-import { Button, Flex, Form, Input, message } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../app/store";
-import { getIssues, getIssuesFinally, getIssuesDone, getIssuesInProgress, getIssuesTodo, setIssuesSearched, getAllIssues } from "../app/features/issues/issuesSlice";
-import { getRepoUrl } from "../app/features/repo/repoSlice";
+import { Button, Flex, Form, Input, message } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../app/store';
+import { getIssues, getIssuesFinally, getIssuesDone, getIssuesInProgress, getIssuesTodo, setIssuesSearched, getAllIssues } from '../app/features/issues/issuesSlice';
+import { getRepoUrl } from '../app/features/repo/repoSlice';
 
 export default function FormComponent() {
     const [form] = Form.useForm();
@@ -18,8 +18,8 @@ export default function FormComponent() {
                 dispatch(getIssuesDone(issues.done));
                 dispatch(getIssuesInProgress(issues.inProgress));
                 dispatch(getIssuesTodo(issues.todo));
-                dispatch(getAllIssues([...issues.todo, ...issues.inProgress, ...issues.done]))
-                message.success("Loaded issues from local storage");
+                dispatch(getAllIssues([...issues.todo, ...issues.inProgress, ...issues.done]));
+                message.success('Loaded issues from local storage');
                 return;
             }
 
@@ -27,28 +27,28 @@ export default function FormComponent() {
             const response = await fetch(repoUrl);
 
             if (!response.ok) {
-                throw new Error("Error fetching github api");
+                throw new Error('Error fetching github api');
             }
 
             const data = await response.json();
 
             dispatch(getAllIssues(data));
 
-            const todoIssues = data.filter((issue: IssueT) => issue.state === "open" && !issue.assignee);
-            const inProgressIssues = data.filter((issue: IssueT) => issue.state === "open" && issue.assignee);
-            const doneIssues = data.filter((issue: IssueT) => issue.state === "closed");
+            const todoIssues = data.filter((issue: IssueT) => issue.state === 'open' && !issue.assignee);
+            const inProgressIssues = data.filter((issue: IssueT) => issue.state === 'open' && issue.assignee);
+            const doneIssues = data.filter((issue: IssueT) => issue.state === 'closed');
 
             dispatch(getIssuesTodo(todoIssues));
             dispatch(getIssuesInProgress(inProgressIssues));
             dispatch(getIssuesDone(doneIssues));
 
             localStorage.setItem(repoUrl, JSON.stringify({ todo: todoIssues, inProgress: inProgressIssues, done: doneIssues }));
-            message.success("Successfully fetched repository");
+            message.success('Successfully fetched repository');
         } catch (error) {
             form.setFields([
                 {
-                    name: "repoUrl",
-                    errors: [error instanceof Error ? error.message : "Unknown error"],
+                    name: 'repoUrl',
+                    errors: [error instanceof Error ? error.message : 'Unknown error'],
                 },
             ]);
         } finally {
@@ -74,10 +74,10 @@ export default function FormComponent() {
             >
                 <Form.Item
                     name="repoUrl"
-                    rules={[{ required: true, message: "Please enter repository url" }, {
+                    rules={[{ required: true, message: 'Please enter repository url' }, {
                         validator: (_, value) =>
                             value && !value.match(/^https:\/\/github\.com\/[^/]+\/[^/]+$/)
-                                ? Promise.reject(new Error("Invalid github url!"))
+                                ? Promise.reject(new Error('Invalid github url!'))
                                 : Promise.resolve(),
                     },]}
                     style={{ flex: 1 }}
@@ -93,4 +93,4 @@ export default function FormComponent() {
             </Form>
         </Flex >
     );
-}
+};
